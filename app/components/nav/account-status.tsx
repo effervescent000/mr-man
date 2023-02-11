@@ -7,7 +7,10 @@ const AccountStatus = () => {
   return (
     <div>
       {user ? (
-        <Link to="/logout">Logout</Link>
+        <>
+          <Link to="/logout">Logout</Link>
+          <Link to="/saves">Save games</Link>
+        </>
       ) : (
         <>
           <Link to="/login">Login</Link>

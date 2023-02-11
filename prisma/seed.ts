@@ -27,6 +27,7 @@ async function seed() {
   const saveFile = await prisma.save.create({
     data: {
       userId: user.id,
+      active: true,
     },
   });
 

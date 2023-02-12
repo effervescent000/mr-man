@@ -11,7 +11,9 @@ const AccountStatus = () => {
           <span data-cy="logout">
             <Link to="/logout">Logout</Link>
           </span>
-          <Link to="/saves">Save games</Link>
+          <span data-cy="saves-link">
+            <Link to="/saves">Save games</Link>
+          </span>
         </>
       ) : (
         <>

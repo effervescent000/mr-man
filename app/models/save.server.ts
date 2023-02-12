@@ -19,3 +19,13 @@ export const getUserSaves = async (userId?: number) => {
     },
   });
 };
+
+export const createSave = async ({
+  title,
+  userId,
+}: {
+  title?: string;
+  userId: number;
+}) => {
+  return await prisma.save.create({ data: { title, userId } });
+};

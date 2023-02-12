@@ -1,17 +1,27 @@
-// import { createCookieSessionStorage } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import type { LoaderArgs } from "@remix-run/server-runtime";
+import type { ActionArgs, LoaderArgs } from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
-import SaveRow from "~/components/saves/save-row";
 
-import { getUserSaves } from "~/models/save.server";
+import { createSave, getUserSaves } from "~/models/save.server";
 import { getUserId } from "~/session.server";
 import type { ISaveData } from "~/types/interfaces";
 
-// const { getSession } = createCookieSessionStorage();
+import SaveRow from "~/components/saves/save-row";
+import { asStringOrUndefined } from "~/utils";
+import NewSave from "~/components/saves/new-save";
+
+export const action = async ({ request }: ActionArgs) => {
+  const userId = await getUserId(request);
+  if (!userId) return null;
+  const body = await request.formData();
+
+  return createSave({
+    title: asStringOrUndefined(body.get("title")),
+    userId,
+  });
+};
 
 export const loader = async ({ request }: LoaderArgs) => {
-  // const cookie = request.headers.get("cookie");
   const userId = await getUserId(request);
   return json({ saves: await getUserSaves(userId) });
 };

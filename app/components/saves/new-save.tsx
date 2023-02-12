@@ -1,11 +1,14 @@
 import { Form } from "@remix-run/react";
 
+import SubmitButton from "../form-components/submit-button";
+import TextInput from "../form-components/text-input";
+
 const NewSave = () => {
   return (
     <div>
       <Form method="post">
-        <input type="text" name="title" />
-        <button type="submit">Create save file</button>
+        <TextInput name="title" datacy="new-save-title" />
+        <SubmitButton>Create save file</SubmitButton>
       </Form>
     </div>
   );

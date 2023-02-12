@@ -8,13 +8,19 @@ const AccountStatus = () => {
     <div>
       {user ? (
         <>
-          <Link to="/logout">Logout</Link>
+          <span data-cy="logout">
+            <Link to="/logout">Logout</Link>
+          </span>
           <Link to="/saves">Save games</Link>
         </>
       ) : (
         <>
-          <Link to="/login">Login</Link>
-          <Link to="/join">Sign up</Link>
+          <span data-cy="login">
+            <Link to="/login">Login</Link>
+          </span>
+          <span data-cy="join">
+            <Link to="/join">Sign up</Link>
+          </span>
         </>
       )}
     </div>

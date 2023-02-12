@@ -104,6 +104,7 @@ export default function Join() {
                 autoFocus={true}
                 name="email"
                 type="email"
+                data-cy="email-input"
                 autoComplete="email"
                 aria-invalid={actionData?.errors?.email ? true : undefined}
                 aria-describedby="email-error"
@@ -130,6 +131,7 @@ export default function Join() {
                 ref={passwordRef}
                 name="password"
                 type="password"
+                data-cy="password-input"
                 autoComplete="new-password"
                 aria-invalid={actionData?.errors?.password ? true : undefined}
                 aria-describedby="password-error"
@@ -147,6 +149,7 @@ export default function Join() {
           <button
             type="submit"
             className="w-full rounded bg-blue-500  py-2 px-4 text-white hover:bg-blue-600 focus:bg-blue-400"
+            data-cy="create-account-btn"
           >
             Create Account
           </button>

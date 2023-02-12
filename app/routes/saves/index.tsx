@@ -6,6 +6,7 @@ import SaveRow from "~/components/saves/save-row";
 
 import { getUserSaves } from "~/models/save.server";
 import { getUserId } from "~/session.server";
+import type { ISaveData } from "~/types/interfaces";
 
 // const { getSession } = createCookieSessionStorage();
 
@@ -20,7 +21,7 @@ const SavesPage = () => {
 
   return (
     <div>
-      {data.saves.map((save) => (
+      {data.saves.map((save: ISaveData) => (
         <SaveRow key={save.id} save={save} />
       ))}
     </div>

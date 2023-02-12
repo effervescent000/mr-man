@@ -8,7 +8,7 @@ const NewSave = () => {
     <div>
       <Form method="post">
         <TextInput name="title" datacy="new-save-title" />
-        <SubmitButton>Create save file</SubmitButton>
+        <SubmitButton datacy="new-save-submit">Create save file</SubmitButton>
       </Form>
     </div>
   );

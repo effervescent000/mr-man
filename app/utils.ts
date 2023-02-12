@@ -1,8 +1,6 @@
 import { useMatches } from "@remix-run/react";
 import { useMemo } from "react";
 
-import type { ISaveData } from "./types/interfaces";
-
 import type { User } from "~/models/user.server";
 
 const DEFAULT_REDIRECT = "/";
@@ -71,3 +69,6 @@ export function useUser(): User {
 export function validateEmail(email: unknown): email is string {
   return typeof email === "string" && email.length > 3 && email.includes("@");
 }
+
+export const asStringOrUndefined = (value: FormDataEntryValue | null) =>
+  value ? `${value}` : undefined;

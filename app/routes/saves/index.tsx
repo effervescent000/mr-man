@@ -21,6 +21,7 @@ const SavesPage = () => {
 
   return (
     <div>
+      <NewSave />
       {data.saves.map((save: ISaveData) => (
         <SaveRow key={save.id} save={save} />
       ))}

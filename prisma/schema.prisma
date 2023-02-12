@@ -28,6 +28,7 @@ model Password {
 model Save {
   id     Int     @id @default(autoincrement())
   active Boolean @default(false)
+  title  String  @default("Untitled")
 
   user   User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId Int

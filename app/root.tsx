@@ -11,6 +11,8 @@ import {
 
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import { getUser } from "./session.server";
+import Header from "./components/nav/header";
+import { getActiveSaveByUserId } from "./models/save.server";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: tailwindStylesheetUrl }];
@@ -23,8 +25,11 @@ export const meta: MetaFunction = () => ({
 });
 
 export async function loader({ request }: LoaderArgs) {
+  const user = await getUser(request);
+  if (!user) return json({ user, save: null });
   return json({
-    user: await getUser(request),
+    user,
+    save: await getActiveSaveByUserId(user.id),
   });
 }
 
@@ -36,6 +41,7 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
+        <Header />
         <Outlet />
         <ScrollRestoration />
         <Scripts />

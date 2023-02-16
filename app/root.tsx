@@ -12,7 +12,7 @@ import {
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import { getUser } from "./session.server";
 import Header from "./components/nav/header";
-import { getActiveSaveByUserId } from "./models/save.server";
+// import { getActiveSaveByUserId } from "./models/save.server";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: tailwindStylesheetUrl }];
@@ -29,7 +29,7 @@ export async function loader({ request }: LoaderArgs) {
   if (!user) return json({ user, save: null });
   return json({
     user,
-    save: await getActiveSaveByUserId(user.id),
+    save: null,
   });
 }
 

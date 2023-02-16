@@ -1,29 +1,29 @@
 import { useLoaderData } from "@remix-run/react";
 import type { ActionArgs, LoaderArgs } from "@remix-run/server-runtime";
-import { json } from "@remix-run/server-runtime";
 
-import { createSave, getUserSaves } from "~/models/save.server";
-import { getUserId } from "~/session.server";
+// import { createSave, getUserSaves } from "~/models/save.server";
 import type { ISaveData } from "~/types/interfaces";
 
 import SaveRow from "~/components/saves/save-row";
-import { asStringOrUndefined } from "~/utils";
+// import { asStringOrUndefined } from "~/utils";
 import NewSave from "~/components/saves/new-save";
 
 export const action = async ({ request }: ActionArgs) => {
-  const userId = await getUserId(request);
-  if (!userId) return null;
-  const body = await request.formData();
+  // const userId = await getUserId(request);
+  // if (!userId) return null;
+  // const body = await request.formData();
 
-  return createSave({
-    title: asStringOrUndefined(body.get("title")),
-    userId,
-  });
+  // return createSave({
+  //   title: asStringOrUndefined(body.get("title")),
+  //   userId,
+  // });
+  return null;
 };
 
 export const loader = async ({ request }: LoaderArgs) => {
-  const userId = await getUserId(request);
-  return json({ saves: await getUserSaves(userId) });
+  // const userId = await getUserId(request);
+  // return json({ saves: await getUserSaves(userId) });
+  return null;
 };
 
 const SavesPage = () => {

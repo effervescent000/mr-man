@@ -20,7 +20,7 @@ class BackendApiService {
     return response.json();
   }
 
-  async GET(endpoint: string, callback: () => void) {
+  async GET(endpoint: string, callback: () => any) {
     this._makeGetRequest(endpoint)
       .then(callback)
       .catch((error) => console.log(error));
@@ -38,14 +38,20 @@ class BackendApiService {
       credentials,
       headers,
       body: JSON.stringify(data),
+      method: "post",
     });
     return response.json();
   }
 
-  async POST(endpoint: string, data: {}, callback: () => void) {
-    this._makePostRequest(endpoint, data)
-      .then(callback)
-      .catch((error) => console.log(error));
+  async POST(endpoint: string, data: {}) {
+    try {
+      const response = await this._makePostRequest(endpoint, data);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 }
 
